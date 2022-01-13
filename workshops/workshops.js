@@ -1,5 +1,5 @@
 import { checkAuth, deleteParticipant, getWorkshops, logout } from '../fetch-utils.js';
-
+import { renderParticipant } from '../render-utils.js';
 checkAuth();
 
 const toCreateButton = document.getElementById('nav-to-create');
@@ -28,7 +28,7 @@ export async function fetchAndDisplayWorkshops() {
 
     for (let workshop of workshops) {
         const workshopCard = document.createElement('div');
-        const workshopName = document.createElement('h2');
+        const workshopName = document.createElement('h3');
         const participantsEl = document.createElement('div');
 
         workshopCard.classList.add('workshop');
@@ -48,9 +48,3 @@ export async function fetchAndDisplayWorkshops() {
     }
 }
 
-export function renderParticipant(participant) {
-    const name = document.createElement('h3');
-    name.textContent = participant.name;
-    name.classList.add('participant');
-    return name;
-}
